@@ -1,1 +1,1 @@
-# Mini_Task_C-
+# Mini_Task_CPP
