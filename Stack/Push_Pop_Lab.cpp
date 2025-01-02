@@ -2,7 +2,7 @@
 using namespace std;
 
 #define n 5
-int s[n];
+int stack_arr[n];
 int top = 0;
 
 int isFull()
@@ -10,14 +10,17 @@ int isFull()
     return top == n ? true : false;
 }
 
-void push(int e)
+void push(int element)
 {
     if (isFull())
     {
         cout << "Full\n";
         return;
     }
-    s[top++] = e;
+    else
+    {
+        stack_arr[top++] = element;
+    }
 }
 
 int isEmpty()
@@ -32,25 +35,26 @@ void pop()
         cout << "Empty\n";
         return;
     }
-    top--;
+    else
+    {
+        top--;
+    }
 }
 
 int topElement()
 {
-    return s[top - 1];
+    return stack_arr[top - 1];
 }
 
-void show()
-{
-    for (int i = top - 1; i >= 0; i--)
-    {
-        cout << s[i] << endl;
+void show(){
+    for(int i=top-1;i>=0;i--){
+        cout<<stack_arr[i]<<endl;
     }
-    cout << "-------------\n";
+    cout<<"-----------------------";
 }
 
-int main()
-{
+int main(){
+
     push(10);
     push(20);
     push(30);
@@ -60,4 +64,6 @@ int main()
     show();
     pop();
     cout << topElement() << endl;
+
+    return 0;
 }
