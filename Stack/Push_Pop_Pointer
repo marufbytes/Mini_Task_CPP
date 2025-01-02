@@ -3,29 +3,29 @@ using namespace std;
 
 int top = 0;
 int n = 2;
-int *s = new int[n];
+int *stack_arr = new int[n];
 
 int isFull()
 {
     return top == n ? true : false;
 }
 
-void push(int e)
+void push(int element)
 {
     if (isFull())
     {
         n = 2 * n;
-        int *s1 = new int[n];
+        int *stack_arr1 = new int[n];
         for (int i = 0; i < top; i++)
         {
-            s1[i] = s[i];
+            stack_arr1[i] = stack_arr[i];
         }
-        s = s1;
-        s[top++] = e;
+        stack_arr = stack_arr1;
+        stack_arr[top++] = element;
     }
     else
     {
-        s[top++] = e;
+        stack_arr[top++] = element;
     }
 }
 
@@ -41,35 +41,37 @@ void pop()
         cout << "Empty\n";
         return;
     }
-    top--;
+    else
+    {
+        top--;
+    }
 }
 
 int topElement()
 {
-    return s[top - 1];
+    return stack_arr[top - 1];
 }
 
 void show()
 {
     for (int i = top - 1; i >= 0; i--)
     {
-        cout << s[i] << endl;
+        cout << stack_arr[i] << endl;
     }
-    cout << "-------------\n";
+    cout << "-----------------------";
 }
 
 int main()
 {
+
     push(10);
     push(20);
     push(30);
     push(40);
     push(50);
     push(60);
-    push(70);
-    push(80);
-    pop();
     show();
+    pop();
     cout << topElement() << endl;
 
     return 0;
